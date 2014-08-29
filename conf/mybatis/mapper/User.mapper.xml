@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengking.manager.IUserManager">
+	<select id="findById" parameterType="int" resultType="User">
+		select *
+		from `user` where userId=#{id}
+	</select>
+
+	<select id="findByName" parameterType="string" resultType="User">
+		select * from `user` where userName=#{userName}
+	</select>
+
+	<insert id="addUser" parameterType="User" useGeneratedKeys="true"
+		keyProperty="userId">
+		insert into user (uuid,userName,password) values
+		(#{uuid},#{userName},#{password})
+	</insert>
+
+	<select id="listUser" parameterType="string" resultMap="resultListUser">
+		select * from `user` where userName like #{userName}
+	</select>
+
+	<resultMap type="User" id="resultListUser">
+		<id column="userId" property="userId" />
+		<result column="uuid" property="uuid" />
+		<result column="userName" property="userName" />
+		<result column="password" property="password" />
+	</resultMap>
+	
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.chengking.model.bo">
+	<class name="GlobalConfig" table="`mkglobalconfig`" dynamic-insert="true" dynamic-update="true">
+		<id name="id" type="integer">
+			<column name="`id`"/>
+			<generator class="native"/>
+		</id>
+		<property name="uuid" type="string" column="`UUID`" length="255" unique="true" />
+		<property name="key" type="string" column="`KEY`" not-null="true" unique="true" length="40"  />
+		<property name="value" column="`VALUE`" length="255"  />
+		<property name="desc" column="`ROLEDESC`" length="250" />
+		<property name="createTime" column="`CREATETime`"/>
+		<property name="lastEditTime" column="`LASTEDITTIME`"/>
+	</class>
+</hibernate-mapping>
